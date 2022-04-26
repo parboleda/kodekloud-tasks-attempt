@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  nginx:
+    image: docker
+    command: sh -c "docker run -p 8080:80 --privileged nginx"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - /var/lib/app
+    deploy:
+      placement:
+        constraints: [node.role == manager]

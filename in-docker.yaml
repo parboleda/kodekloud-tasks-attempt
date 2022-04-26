@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  in-docker:
+   image: docker
+   command: >
+     sh -c "docker run --runtime=sysbox-runc -P -v /etc/apparmor.d/containers/docker-nginx:/etc/apparmor.d/containers/docker-nginx nestybox/ubuntu-focal-systemd-docker && sleep 3h"
+   volumes:
+   - /var/run/docker.sock:/var/run/docker.sock
+   - /home/ubuntu/docker-nginx:/etc/apparmor.d/containers/docker-nginx
